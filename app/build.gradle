@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 
 jacoco {
-    toolVersion = '0.8.0'
+    toolVersion = "$jacocoVersion"
 }
 
 tasks.withType(Test) {
@@ -61,11 +61,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
 
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2-alpha1'
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2-alpha1'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.7.1'
+    testImplementation 'org.robolectric:robolectric:3.8'
 }
