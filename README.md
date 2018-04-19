@@ -1,5 +1,11 @@
 # Unified Code Coverage for Android
 
+> Fork version with multi module implementation
+> [Multi Module Example](https://github.com/tramalho/unified-code-coverage-android/tree/mixed-languages-multi-module)
+> Please check original version links below.
+
+============
+
 A sample project showcase of how to merge the coverage data from both `androidTest` and `test`.
 
 [Java Example](https://github.com/rafaeltoledo/unified-code-coverage-android/)
