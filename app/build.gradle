@@ -1,34 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
-apply plugin: 'jacoco'
-
-jacoco {
-    toolVersion = "$jacocoVersion"
-}
-
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
-}
-
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
-
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-    def javaClasses = fileTree(dir: "$project.buildDir/intermediates/classes/debug", excludes: fileFilter)
-    def kotlinClasses = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
-    def javaSrc = "$project.projectDir/src/main/java"
-    def kotlinSrc = "$project.projectDir/src/main/kotlin"
-
-    sourceDirectories = files([javaSrc, kotlinSrc])
-    classDirectories = files([javaClasses, kotlinClasses])
-    executionData = fileTree(dir: project.buildDir, includes: [
-            'jacoco/testDebugUnitTest.exec', 'outputs/code-coverage/connected/*coverage.ec'
-    ])
-}
+apply from: rootProject.file("jacoco.gradle")
 
 android {
     compileSdkVersion 27
@@ -73,6 +45,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
+    implementation project(':another_module')
 
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2-alpha1'
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2-alpha1'

@@ -1,0 +1,47 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "$jacocoVersion"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+
+    group "Reporting"
+    description "Generate Jacoco coverage reports."
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+        html.destination file(rootProject.buildDir)
+    }
+
+    def javaClasses = []
+    def kotlinClasses = []
+    def javaSrc = []
+    def kotlinSrc = []
+    def execution = []
+
+    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
+
+    rootProject.subprojects.each { proj ->
+        javaClasses   << fileTree(dir: "$proj.buildDir/intermediates/classes/debug", excludes: fileFilter)
+        kotlinClasses << fileTree(dir: "$proj.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+        javaSrc       << "$proj.projectDir/src/main/java"
+        kotlinSrc     << "$proj.projectDir/src/main/kotlin"
+        execution     << fileTree(dir: proj.buildDir,
+                includes: ['jacoco/testDebugUnitTest.exec',
+                           'outputs/code-coverage/connected/*coverage.ec'])
+    }
+
+    sourceDirectories = files([javaSrc, kotlinSrc])
+    classDirectories = files([javaClasses, kotlinClasses])
+
+    println execution
+
+    executionData = files(execution)
+}
+
