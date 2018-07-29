@@ -34,4 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             v.setVisibility(View.GONE);
         }
     }
+
+    public void blank() {
+
+    }
 }

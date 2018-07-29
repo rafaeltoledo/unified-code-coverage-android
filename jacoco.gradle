@@ -16,7 +16,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     reports {
         xml.enabled = true
         html.enabled = true
-        html.destination file(rootProject.buildDir)
+        html.destination file("${rootProject.buildDir}/coverage-report")
     }
 
     def javaClasses = []
@@ -40,8 +40,12 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     sourceDirectories = files([javaSrc, kotlinSrc])
     classDirectories = files([javaClasses, kotlinClasses])
 
-    println execution
+    print execution
 
     executionData = files(execution)
+
+    doLast() {
+        print "file://${reports.html.destination}/index.html"
+    }
 }
 
