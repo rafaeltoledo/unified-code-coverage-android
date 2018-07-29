@@ -10,15 +10,15 @@ test-pattern: # Configure exclusions for test sources
   exclude-rule-sets:
     - 'comments'
   exclude-rules:
-    - 'NamingRules'
-    - 'WildcardImport'
-    - 'MagicNumber'
-    - 'MaxLineLength'
-    - 'LateinitUsage'
-    - 'StringLiteralDuplication'
-    - 'SpreadOperator'
-    - 'TooManyFunctions'
-    - 'ForEachOnRange'
+#    - 'NamingRules'
+#    - 'WildcardImport'
+#    - 'MagicNumber'
+#    - 'MaxLineLength'
+#    - 'LateinitUsage'
+#    - 'StringLiteralDuplication'
+#    - 'SpreadOperator'
+#    - 'TooManyFunctions'
+#    - 'ForEachOnRange'
 
 build:
   maxIssues: 10

@@ -37,7 +37,7 @@ sonarqube {
 
         property "sonar.jacoco.reportPaths", files
         property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.junit.reportPaths", "${proj.buildDir}build/test-results/testDebugUnitTest"
-        property "sonar.android.lint.report", "${proj.buildDir}build/outputs/lint-results.xml"
+        property "sonar.junit.reportPaths", "${project.buildDir}build/test-results/testDebugUnitTest"
+        property "sonar.android.lint.report", "${project.buildDir}build/outputs/lint-results.xml"
     }
 }
