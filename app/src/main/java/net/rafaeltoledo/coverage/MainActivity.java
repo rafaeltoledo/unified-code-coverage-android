@@ -2,10 +2,11 @@ package net.rafaeltoledo.coverage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.another.AnotherModuleActivity;
 
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.button).setOnClickListener(this);
         findViewById(R.id.hide).setOnClickListener(this);
+        text = findViewById(R.id.text);
+
         findViewById(R.id.navigate).setOnClickListener(this);
-        text = (TextView) findViewById(R.id.text);
     }
 
     @Override
@@ -33,9 +35,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             v.setVisibility(View.GONE);
         }
-    }
-
-    public void blank() {
-
     }
 }
