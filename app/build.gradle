@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply from: rootProject.file("jacoco.gradle")
-apply from: rootProject.file("sonarqube.gradle")
 
 android {
     compileSdkVersion 27
 
     defaultConfig {
         applicationId 'net.rafaeltoledo.coverage'
-        minSdkVersion 18
+        minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName '1.0'
