@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply from: rootProject.file("jacoco.gradle")
-apply from: rootProject.file("sonarqube.gradle")
-
 
 android {
     compileSdkVersion 27
