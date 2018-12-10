@@ -1,4 +1,4 @@
-package br.com.another.tramalho;
+package br.com.another;
 
 import org.junit.Test;
 

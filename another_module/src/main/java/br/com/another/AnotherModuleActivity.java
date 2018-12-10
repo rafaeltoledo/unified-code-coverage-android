@@ -1,9 +1,10 @@
 package br.com.another;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AnotherModuleActivity extends AppCompatActivity {
 
