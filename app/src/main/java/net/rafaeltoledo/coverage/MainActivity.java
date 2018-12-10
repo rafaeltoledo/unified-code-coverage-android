@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import net.rafaeltoledo.coverage.another.AnotherModuleActivity;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.another.AnotherModuleActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

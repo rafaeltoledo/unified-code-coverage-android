@@ -1,4 +1,4 @@
-package net.rafaeltoledo.coverage;
+package net.rafaeltoledo.coverage.another;
 
 import android.os.Bundle;
 import android.view.View;

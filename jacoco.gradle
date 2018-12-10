@@ -28,7 +28,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
 
     rootProject.subprojects.each { proj ->
-        javaClasses   << fileTree(dir: "$proj.buildDir/intermediates/classes/debug", excludes: fileFilter)
+        javaClasses   << fileTree(dir: "$proj.buildDir/intermediates/javac/debug", excludes: fileFilter)
         kotlinClasses << fileTree(dir: "$proj.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
         javaSrc       << "$proj.projectDir/src/main/java"
         kotlinSrc     << "$proj.projectDir/src/main/kotlin"
