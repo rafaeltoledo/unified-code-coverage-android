@@ -1,4 +1,4 @@
-package br.com.another
+package net.rafaeltoledo.coverage.another
 
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat

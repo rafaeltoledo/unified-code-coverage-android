@@ -1,4 +1,4 @@
-package br.com.another;
+package net.rafaeltoledo.coverage;
 
 import org.junit.Test;
 
