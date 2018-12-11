@@ -1,12 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
+
 apply from: rootProject.file("jacoco.gradle")
 
 android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId 'net.rafaeltoledo.coverage'
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -31,6 +31,7 @@ android {
         }
     }
 
+
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
         animationsDisabled true
@@ -42,8 +43,6 @@ android {
 }
 
 dependencies {
-
-    implementation project(path: ':another_module')
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
 
