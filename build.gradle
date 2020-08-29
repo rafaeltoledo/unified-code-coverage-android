@@ -1,20 +1,31 @@
 buildscript {
-    ext.jacocoVersion = '0.8.2'
+    ext.jacocoVersion = '0.8.5'
 
     repositories {
         google()
+        mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-rc02'
-        classpath "org.jacoco:org.jacoco.core:$jacocoVersion"
+        classpath 'com.android.tools.build:gradle:4.0.1'
     }
 }
 
 allprojects {
     repositories {
         google()
+        mavenCentral()
         jcenter()
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                if (details.requested.group == 'org.jacoco') {
+                    details.useVersion jacocoVersion
+                }
+            }
+        }
     }
 }
 
