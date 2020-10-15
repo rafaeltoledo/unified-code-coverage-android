@@ -1,5 +1,5 @@
 buildscript {
-    ext.jacocoVersion = '0.8.5'
+    ext.jacocoVersion = '0.8.6'
 
     repositories {
         google()
@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.android.tools.build:gradle:4.1.0'
     }
 }
 
