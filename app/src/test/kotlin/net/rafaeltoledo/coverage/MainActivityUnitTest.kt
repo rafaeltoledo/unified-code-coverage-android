@@ -1,24 +1,25 @@
 package net.rafaeltoledo.coverage
 
-import android.view.View
-import android.widget.Button
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.`is`
+import androidx.test.core.app.launchActivity
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.Matchers.not
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.Robolectric
-import org.robolectric.RobolectricTestRunner
 
-@RunWith(RobolectricTestRunner::class)
+@RunWith(AndroidJUnit4::class)
 class MainActivityUnitTest {
 
     @Test
     fun shouldHideButtonAfterClick() {
-        val activity = Robolectric.setupActivity(MainActivity::class.java)
+        launchActivity<MainActivity>()
 
-        val button = activity.findViewById<Button>(R.id.hide)
-        button.performClick()
+        onView(withId(R.id.hide)).perform(click())
 
-        assertThat(button.visibility, `is`(View.GONE))
+        onView(withId(R.id.hide)).check(matches(not(isDisplayed())))
     }
 }
