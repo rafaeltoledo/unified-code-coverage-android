@@ -1,20 +1,17 @@
 # Unified Code Coverage for Android
 
-> Fork version with multi module implementation
-
-> [Multi Module Example](https://github.com/tramalho/unified-code-coverage-android/tree/mixed-languages-multi-module)
-
-> Please check original version links below.
-
-============
-
 A sample project showcase of how to merge the coverage data from both `androidTest` and `test`.
+
+## AGP Version
+
+Currently written with AGP 4.2.0 as there are some issues with AGP 7.0.0 creating coverage unit test coverage files
+in conjunction with instrumented test coverage files described here: https://issuetracker.google.com/issues/195860510
 
 [Java Example](https://github.com/rafaeltoledo/unified-code-coverage-android/)
 
 [Kotlin Example](https://github.com/rafaeltoledo/unified-code-coverage-android/tree/kotlin-coverage)
 
-[Java+Kotlin Example](https://github.com/rafaeltoledo/unified-code-coverage-android/tree/mixed-languages)
+[Java+Kotlin Multi-Module Example](https://github.com/rafaeltoledo/unified-code-coverage-android/tree/mixed-languages)
 
 =============
 
