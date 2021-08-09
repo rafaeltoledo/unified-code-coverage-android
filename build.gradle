@@ -1,14 +1,23 @@
+apply from: "jacoco.gradle"
+
 buildscript {
-    ext.kotlinVersion = '1.3.11'
-    ext.jacocoVersion = '0.8.1'
+
+    ext.kotlinVersion = '1.5.21'
+    ext.gradlePluginVersion = '4.2.0'
+//    ext.gradlePluginVersion = '7.0.0'
+    ext.testXVersion = '1.3.0'
+    ext.espressoCoreVersion = '3.3.0'
+    ext.robolectricVersion = '4.6.1'
+    ext.junitVersion = '4.13'
+    ext.testXJunitVersion = '1.1.2'
+    ext.appCompatVersion = '1.2.0'
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-rc02'
-        classpath "org.jacoco:org.jacoco.core:$jacocoVersion"
+        classpath "com.android.tools.build:gradle:$gradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
@@ -16,7 +25,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

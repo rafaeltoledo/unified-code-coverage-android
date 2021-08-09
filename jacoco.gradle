@@ -1,17 +1,15 @@
-apply plugin: 'jacoco'
+apply from: "jacocoDeps.gradle"
 
-jacoco {
-    toolVersion = "$jacocoVersion"
-}
-
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
-}
-
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport) {
 
     group "Reporting"
     description "Generate Jacoco coverage reports."
+
+    // Make this root task depend on the unit tests of all modules
+    rootProject.subprojects.each {
+        dependsOn("${it.name}:testDebugUnitTest")
+        dependsOn("${it.name}:createDebugCoverageReport")
+    }
 
     reports {
         xml.enabled = true
@@ -28,13 +26,18 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
 
     rootProject.subprojects.each { proj ->
-        javaClasses   << fileTree(dir: "$proj.buildDir/intermediates/javac/debug", excludes: fileFilter)
+        javaClasses << fileTree(dir: "$proj.buildDir/intermediates/javac/debug", excludes: fileFilter)
         kotlinClasses << fileTree(dir: "$proj.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
-        javaSrc       << "$proj.projectDir/src/main/java"
-        kotlinSrc     << "$proj.projectDir/src/main/kotlin"
-        execution     << fileTree(dir: proj.buildDir,
+        javaSrc << "$proj.projectDir/src/main/java"
+        kotlinSrc << "$proj.projectDir/src/main/kotlin"
+        execution << fileTree(dir: proj.buildDir,
                 includes: ['jacoco/testDebugUnitTest.exec',
+                           // Output for AGP 7.0.0
+                           // 'outputs/unit_test_code_coverage/**/*.exec',
                            'outputs/code_coverage/debugAndroidTest/connected/**/*.ec'])
+        // To work around proper coverage file being empty in AGP 4.2.0
+        // Rely on erroneously created root-level as well since it actually includes coverage info
+        execution << fileTree(dir: proj.projectDir, includes: ['jacoco.exec'])
     }
 
     sourceDirectories = files([javaSrc, kotlinSrc])
